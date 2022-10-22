@@ -6,6 +6,10 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Alumnos;
 use App\Models\Cursos;
 use App\Models\Profesores;
+use App\Models\paise;
+use App\Models\departamento;
+use App\Models\provincia;
+use App\Models\municipio;
 use PDF;
 
 class AlumnosController extends Controller
@@ -176,9 +180,24 @@ class AlumnosController extends Controller
     public function show(Request $request, $id){
 
       $alumno = Alumnos::findOrFail($id);
-      return view('alumnos.view', compact('alumno'));
-    
+      $idp    = $alumno->paise;
+      $idDep  = $alumno->departamento;
+      $idPro  = $alumno->provincia;
+      $idmun  = $alumno->municipio; 
+
+       $pais = paise::       findOrFail($idp);
+       $dep  = departamento::findOrFail($idDep);
+       $pro  = provincia::   findOrFail($idPro);
+       $mun  = municipio::   findOrFail($idmun); 
+
+       $pais = $pais;
+       $dept = $dep;
+       $pro = $pro;
+       $mun = $mun; 
+      return view('alumnos.view', compact('alumno','pais','dept','pro','mun'));
     }
+
+    
 
     
     public function edit($id){

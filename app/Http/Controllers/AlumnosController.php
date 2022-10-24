@@ -65,9 +65,11 @@ class AlumnosController extends Controller
            'nombres'   =>$request->get('nombres'),
            'ap_paterno'=>$request->get('ap_paterno'),
            'ap_materno'=>$request->get('ap_materno'),
-           'ci'        =>$request->get('ci'),
-           'ciudad'    =>$request->get('ciudad'),
-           'provincia' =>$request->get('provincia'),
+           'direccion'   =>$request->get('direccion'),
+           'paise'       =>$request->get('paise'),
+           'departamento'=>$request->get('departamento'),
+           'provincia'   =>$request->get('provincia'),
+           'municipio'   =>$request->get('municipio'),
            'num_cel'   =>$request->get('num_cel'),
 
            'fecha_nac' =>$request->get('fecha_nac'),
@@ -121,9 +123,11 @@ class AlumnosController extends Controller
            'nombres'   =>$request->get('nombres'),
            'ap_paterno'=>$request->get('ap_paterno'),
            'ap_materno'=>$request->get('ap_materno'),
-           'ci'        =>$request->get('ci'),
-           'ciudad'    =>$request->get('ciudad'),
-           'provincia' =>$request->get('provincia'),
+           'direccion'   =>$request->get('direccion'),
+           'paise'       =>$request->get('paise'),
+           'departamento'=>$request->get('departamento'),
+           'provincia'   =>$request->get('provincia'),
+           'municipio'   =>$request->get('municipio'),
            'num_cel'   =>$request->get('num_cel'),
            'fecha_nac' =>$request->get('fecha_nac'),
            //'foto_estud=>$nombrearchivo,
@@ -226,10 +230,12 @@ class AlumnosController extends Controller
             $alumno->nombres                = $request->nombres;
             $alumno->ap_paterno             = $request->ap_paterno;
             $alumno->ap_materno             = $request->ap_materno;
-            $alumno->direccionn             = $request->direccionn;
+            $alumno->direccion              = $request->direccion;
             $alumno->ci                     = $request->ci;
-            $alumno->ciudad                 = $request->ciudad;
+            $alumno->paise                  = $request->paise;
+            $alumno->departamento           = $request->departamento;
             $alumno->provincia              = $request->provincia;
+            $alumno->municipio              = $request->municipio;
             $alumno->num_cel                = $request->num_cel;
 
             $alumno->fecha_nac              = $request->dateTime;
@@ -272,10 +278,12 @@ class AlumnosController extends Controller
             $alumno->nombres                = $request->nombres;
             $alumno->ap_paterno             = $request->ap_paterno;
             $alumno->ap_materno             = $request->ap_materno;
-            $alumno->direccionn             = $request->direccionn;
+            $alumno->direccion              = $request->direccion;
             $alumno->ci                     = $request->ci;
-            $alumno->ciudad                 = $request->ciudad;
+            $alumno->paise                  = $request->paise;
+            $alumno->departamento           = $request->departamento;
             $alumno->provincia              = $request->provincia;
+            $alumno->municipio              = $request->municipio;
             $alumno->num_cel                = $request->num_cel;
             $alumno->fecha_nac              = $request->fecha_nac;
             $alumno->genero                 = $request->genero;

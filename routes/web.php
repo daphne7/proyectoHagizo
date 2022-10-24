@@ -6,9 +6,10 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CursosController;
 use App\Http\Controllers\ProfesoresController;
 use App\Http\Controllers\AlumnosController;
-use App\Http\Controllers\PagosController; 
+use App\Http\Controllers\PagosController;
 use App\Http\Controllers\CalificacionController;
-use App\Http\Controllers\SettingsController; 
+use App\Http\Controllers\MateriaController;
+use App\Http\Controllers\SettingsController;
 
 Auth::routes(['register' => true]); //para desactivar el registro de usuario.
 
@@ -23,6 +24,12 @@ Route::resource('pago', PagosController::class)->middleware('auth');
 Route::resource('notas', NotasController::class)->middleware('auth');
 
 //Route::post('/pagoSave', 'App\Http\Controllers\PagosController@guardarPago')->name("pagoSave")->middleware('auth'); //Guardando Pago
+//ruta de materia
+//ruta de materia
+Route::get('/materias',                [MateriaController::class, 'index']);
+Route::get('/materias/create',         [App\Http\Controllers\MateriaController::class, 'create']);
+Route::get('/materias/{materia}/edit', [App\Http\Controllers\MateriaController::class, 'edit']);
+Route::post('/materias',               [MateriaController::class, 'sendData'])->name('sendData');
 
 
 //Route::get('excel/exportAlumnos', 'App\Http\Controllers\AlumnosController@exportAlumnos')->name("exportAlumnos")->middleware('auth');
@@ -43,7 +50,7 @@ Route::get('/clear-cache', function () {
 Route::get('alumnos/alumpdf', [App\Http\Controllers\AlumnosController::class, 'alumpdf'])->name('alumnos.alumpdf');
 /*Route::get('profes/profpdf', [App\Http\Controllers\ProfesoresController::class, 'profpdf'])->name('profes.profpdf');
 */
- 
+
 /*Route::get('/', function () {
     return view('welcome');
 });

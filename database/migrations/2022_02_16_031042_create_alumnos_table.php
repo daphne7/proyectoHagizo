@@ -11,13 +11,14 @@ class CreateAlumnosTable extends Migration
     {
         Schema::create('alumnos', function (Blueprint $table) {
             $table->id();
-            
+
 
             $table->string('nombres',60)->nullable();
             $table->string('ap_paterno',30)->nullable();
             $table->string('ap_materno',30)->nullable();
             $table->string('ci',10)->nullable();
-            $table->string('direccion',100->nullable();
+            $table->string('direccion',100)->nullable();
+          
 
             $table->string('paise',150)->nullable();
             $table->string('departamento',150)->nullable();
@@ -47,7 +48,7 @@ class CreateAlumnosTable extends Migration
             //Información Académica:
             $table->string('nivel_acad')->nullable();
              $table->string('nivel_acaddos',100)->nullable();
-            //MODALIDAD DE PAGO  
+            //MODALIDAD DE PAGO
             $table->string('mod_pago')->nullable();
 
             //TESTIMONIO PERSONAL
@@ -58,7 +59,7 @@ class CreateAlumnosTable extends Migration
             $table->string('fecha_test')->nullable();
 
             $table->string('foto_estudiante',50)->nullable();
-            
+
             $table->text('observ')->nullable();
 
             $table->foreignId('curso_id')
@@ -69,7 +70,7 @@ class CreateAlumnosTable extends Migration
             $table->foreignId('profesor _id')
                 ->nullable()
                 ->constrained('profesores')
-                ->onDelete('set null');     
+                ->onDelete('set null');
 
             $table->timestamps();
         });

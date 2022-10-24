@@ -7,7 +7,14 @@
         <i class="mdi mdi-home menu-icon"></i>
         <span class="menu-title">Inicio</span>
       </a>
-    </li>                  
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="{{ url('/materias') }}">
+        <i class="mdi mdi-view-headline menu-icon"></i>
+        <span class="menu-title">Materias</span>
+      </a>
+    </li>                 
     <li class="nav-item">
       <a class="nav-link" href="{{ route('profe.index') }}">
         <i class="mdi mdi-chart-pie menu-icon"></i>

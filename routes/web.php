@@ -30,6 +30,8 @@ Route::get('/materias',                [MateriaController::class, 'index']);
 Route::get('/materias/create',         [App\Http\Controllers\MateriaController::class, 'create']);
 Route::get('/materias/{materia}/edit', [App\Http\Controllers\MateriaController::class, 'edit']);
 Route::post('/materias',               [MateriaController::class, 'sendData'])->name('sendData');
+Route::put('/materias/{materia}',      [MateriaController::class, 'update'])->name('update');
+Route::delete('/materias/{materia}',   [MateriaController::class, 'destroy']);
 
 
 //Route::get('excel/exportAlumnos', 'App\Http\Controllers\AlumnosController@exportAlumnos')->name("exportAlumnos")->middleware('auth');

@@ -16,6 +16,14 @@
             		</div>
             	</div>
 
+                <div class="card-body">
+                    @if(session('notification'))
+
+                    <div class="alert alert-success" role="alert">
+                     {{ session('notification')}}
+                    </div>
+                    @endif
+                </div>
             	<div class="table-resposive">
             		<table class="table aling-items-center table-flush">
 
@@ -37,8 +45,14 @@
                      			{{ $materia->descripcion }}
                      		</td>
                      		<td>
-                     			<a href=""class="btn btn-sm btn-primary">Editar</a>
-                              <a href=""class="btn btn-sm btn-danger">Eliminar</a>
+
+                              <form action="{{ url('/materias/'.$materia->id)}}" method="POST">
+                               @csrf
+                               @method('DELETE')
+                               <a href="{{url('/materias/'.$materia->id.'/edit')}}"class="btn btn-sm btn-primary">Editar</a>
+                               <button type="submit"class="btn btn-sm btn-danger">Eliminar</a>
+                              </form>
+
                      		</td>
 
                      	</tr>

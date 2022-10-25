@@ -3,30 +3,25 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
+//use App\Http\Controllers\Request;
 use App\Models\Materia;
 use App\Http\Requests\StoreMateriaRequest;
 use App\Http\Requests\UpdateMateriaRequest;
 
+
 class MateriaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
 
-     public function __construct()
-   {
-       $this->middleware('auth');
+    public function __construct()
+    {
+        $this->middleware('auth');
 
-   }
-
+    }
 
     public function index()
     {
-      $materias = Materia::all();
-     return view('materias.index' , compact('materias'));
-
+        $materias = Materia::all();
+        return view('materias.index' , compact('materias'));
     }
 
     /**
@@ -36,7 +31,7 @@ class MateriaController extends Controller
      */
     public function create()
     {
-         return view('materias.create');
+        return view('materias.create');
     }
 
     /**
@@ -69,27 +64,8 @@ class MateriaController extends Controller
      */
     public function edit(Materia $materia)
     {
-        //
+        return view('materias.edit', compact('materia'));
     }
-
-    public function sendData(Request $request)
-   {
-       $rules = [
-        'name' => 'required|min:3'
-       ];
-       $messages = [
-          'name.required' => 'El nombre de la materia es obligatorio.',
-          'name.min' => 'el nombre de la de la materia debe tener mas de 3 caracteres.'
-       ];
-       $this->validate($request, $rules, $messages);
-
-       $materia = new Materia();
-       $materia->name        = $request->input('name');
-       $materia->descripcion = $request->input('descripcion');
-       $materia->save();
-
-       return redirect('/materias');
-   }
 
     /**
      * Update the specified resource in storage.
@@ -98,9 +74,44 @@ class MateriaController extends Controller
      * @param  \App\Models\Materia  $materia
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMateriaRequest $request, Materia $materia)
+
+    public function update(Request $request, Materia $materia)
     {
-        //
+          $rules = [
+         'name' => 'required|min:3'
+        ];
+        $messages = [
+           'name.required' => 'El nombre de la materia es obligatorio.',
+           'name.min'      => 'El nombre de la de la materia debe tener mas de 3 caracteres.'
+        ];
+        $this->validate($request, $rules, $messages);
+        $materia->name        = $request->input('name');
+        $materia->descripcion = $request->input('descripcion');
+        $materia->save();
+        $notification = 'la materia se ha actualizado correctamente.';
+        return redirect('/materias')->with(compact('notification'));
+    }
+
+
+
+     public function sendData(Request $request)
+    {
+        $rules = [
+         'name' => 'required|min:3'
+        ];
+        $messages = [
+           'name.required' => 'El nombre de la materia es obligatorio.',
+           'name.min' => 'el nombre de la de la materia debe tener mas de 3 caracteres.'
+        ];
+        $this->validate($request, $rules, $messages);
+
+        $materia = new Materia();
+        $materia->name        = $request->input('name');
+        $materia->descripcion = $request->input('descripcion');
+        $materia->save();
+        $notification = 'la materia ha sido creado correctamente.';
+
+        return redirect('/materias')->with(compact('notification'));
     }
 
     /**
@@ -111,6 +122,10 @@ class MateriaController extends Controller
      */
     public function destroy(Materia $materia)
     {
-        //
+        $deleteName = $materia->name;
+        $materia->delete();
+        $notification = 'la materia '. $deleteName .' ha sido eliminado corecctamente';
+        return redirect('/materias')->with(compact('notification'));
+
     }
 }
